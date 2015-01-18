@@ -4,7 +4,7 @@ var test = require('tape')
 var s = require('./')
 
 test('returns safe url', function (t) {
-  t.plan(6)
+  t.plan(7)
 
   t.equal(
     s('https://foo:bar@example.com'),
@@ -26,16 +26,26 @@ test('returns safe url', function (t) {
     'example'
   )
 
+  t.equal(
+    s('http://test@example.com/test@123'),
+    'http://example.com/test@123'
+  )
+
   t.throws(s)
 
   t.throws(s.bind(null, {}))
 })
 
 test('replaces auth with string', function (t) {
-  t.plan(1)
+  t.plan(2)
 
   t.equal(
     s('https://foo:bar@example.com', '***'),
+    'https://***@example.com'
+  )
+
+  t.equal(
+    s('https://http@example.com', '***'),
     'https://***@example.com'
   )
 })
