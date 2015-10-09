@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/boennemann/url-safe",
   "devDependencies": {
-    "tap": "1.4.1",
+    "tap": "2.1.1",
     "semantic-release": "4.3.4"
   }
 }
